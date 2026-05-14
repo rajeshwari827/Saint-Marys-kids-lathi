@@ -1,0 +1,118 @@
+{
+  "entities": {
+    "Teacher": {
+      "title": "Teacher",
+      "description": "Represents a teacher in the school.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "age": { "type": "number" },
+        "subject": { "type": "string" },
+        "qrData": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "subject", "qrData"]
+    },
+    "Attendance": {
+      "title": "Teacher Attendance",
+      "description": "Daily attendance record for teachers.",
+      "type": "object",
+      "properties": {
+        "teacherId": { "type": "string" },
+        "date": { "type": "string" },
+        "entryTime": { "type": "string", "format": "date-time" },
+        "exitTime": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["teacherId", "date"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Represents a student in the school.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "grNumber": { "type": "string" },
+        "fatherName": { "type": "string" },
+        "motherName": { "type": "string" },
+        "address": { "type": "string" },
+        "age": { "type": "number" },
+        "placeOfBirth": { "type": "string" },
+        "dateOfBirth": { "type": "string" },
+        "standard": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "grNumber", "standard"]
+    },
+    "Fee": {
+      "title": "Fee Receipt",
+      "description": "Records fee payments by students.",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "semester": { "type": "string" },
+        "amount": { "type": "number" },
+        "paymentMode": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "amount", "semester", "paymentMode"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized administrators.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email"]
+    },
+    "Result": {
+      "title": "Student Result",
+      "description": "Academic performance records for students.",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "standard": { "type": "string" },
+        "rollNo": { "type": "string" },
+        "academicYear": { "type": "string" },
+        "semester1": { "type": "object" },
+        "semester2": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "standard"]
+    }
+  },
+  "firestore": {
+    "/teachers/{teacherId}": {
+      "schema": "Teacher",
+      "description": "Teachers collection"
+    },
+    "/attendance/{attendanceId}": {
+      "schema": "Attendance",
+      "description": "Daily teacher attendance records"
+    },
+    "/students/{studentId}": {
+      "schema": "Student",
+      "description": "Students collection"
+    },
+    "/fees/{feeId}": {
+      "schema": "Fee",
+      "description": "Active year fee payments"
+    },
+    "/fees_backup/{backupId}": {
+      "schema": "Fee",
+      "description": "Archived previous year fee payments"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Admin access list"
+    },
+    "/results/{resultId}": {
+      "schema": "Result",
+      "description": "Student exam results"
+    }
+  }
+}

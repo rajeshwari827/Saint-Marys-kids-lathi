@@ -1,0 +1,8 @@
+{
+  "name": "Saint Mary's School Management System",
+  "description": "Comprehensive school management for Saint Mary's School featuring QR & Mobile attendance links, results with auto-sync, PTM logging, and one-click student promotion.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}
